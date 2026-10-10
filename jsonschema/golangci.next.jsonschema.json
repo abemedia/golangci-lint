@@ -966,6 +966,7 @@
       "description": "Usable formatter names.",
       "enum": [
         "gci",
+        "gocondense",
         "gofmt",
         "gofumpt",
         "goimports",
@@ -2194,6 +2195,22 @@
                 "type": "string"
               },
               "default": ["TODO", "BUG", "FIXME"]
+            }
+          }
+        },
+        "gocondenseSettings": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "max-len": {
+              "description": "Maximum line length; constructs that would exceed it stay on multiple lines.",
+              "type": "integer",
+              "default": 80
+            },
+            "tab-width": {
+              "description": "Width of a tab character for line length calculation.",
+              "type": "integer",
+              "default": 4
             }
           }
         },
@@ -5460,6 +5477,9 @@
           "properties": {
             "gci": {
               "$ref": "#/definitions/settings/definitions/gciSettings"
+            },
+            "gocondense": {
+              "$ref": "#/definitions/settings/definitions/gocondenseSettings"
             },
             "gofmt": {
               "$ref": "#/definitions/settings/definitions/gofmtSettings"

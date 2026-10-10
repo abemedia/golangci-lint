@@ -4741,6 +4741,7 @@ formatters:
   # Default: [] (uses standard Go formatting)
   enable:
     - gci
+    - gocondense
     - gofmt
     - gofumpt
     - goimports
@@ -4780,6 +4781,14 @@ formatters:
       # Drops lexical ordering for custom sections.
       # Default: false
       no-lex-order: true
+
+    gocondense:
+      # Maximum line length; constructs that would exceed it stay on multiple lines.
+      # Default: 80
+      max-len: 120
+      # Width of a tab character for line length calculation.
+      # Default: 4
+      tab-width: 8
 
     gofmt:
       # Simplify code: gofmt with `-s` option.

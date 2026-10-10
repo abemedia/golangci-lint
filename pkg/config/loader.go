@@ -252,6 +252,10 @@ func (l *Loader) handleFormatterOverrides() {
 	if slices.Contains(l.cfg.Formatters.Enable, "golines") {
 		l.cfg.Linters.Settings.GoLines = l.cfg.Formatters.Settings.GoLines
 	}
+
+	if slices.Contains(l.cfg.Formatters.Enable, "gocondense") {
+		l.cfg.Linters.Settings.GoCondense = l.cfg.Formatters.Settings.GoCondense
+	}
 }
 
 // Add formatter exclusions to linters exclusions.

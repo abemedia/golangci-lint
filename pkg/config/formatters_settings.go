@@ -7,6 +7,10 @@ var defaultFormatterSettings = FormatterSettings{
 	Gci: GciSettings{
 		Sections: []string{"standard", "default"},
 	},
+	GoCondense: GoCondenseSettings{
+		MaxLen:   80,
+		TabWidth: 4,
+	},
 	GoLines: GoLinesSettings{
 		MaxLen:         100,
 		TabLen:         4,
@@ -16,11 +20,12 @@ var defaultFormatterSettings = FormatterSettings{
 }
 
 type FormatterSettings struct {
-	Gci       GciSettings       `mapstructure:"gci"`
-	GoFmt     GoFmtSettings     `mapstructure:"gofmt"`
-	GoFumpt   GoFumptSettings   `mapstructure:"gofumpt"`
-	GoImports GoImportsSettings `mapstructure:"goimports"`
-	GoLines   GoLinesSettings   `mapstructure:"golines"`
+	Gci        GciSettings        `mapstructure:"gci"`
+	GoCondense GoCondenseSettings `mapstructure:"gocondense"`
+	GoFmt      GoFmtSettings      `mapstructure:"gofmt"`
+	GoFumpt    GoFumptSettings    `mapstructure:"gofumpt"`
+	GoImports  GoImportsSettings  `mapstructure:"goimports"`
+	GoLines    GoLinesSettings    `mapstructure:"golines"`
 }
 
 type GciSettings struct {
@@ -29,6 +34,11 @@ type GciSettings struct {
 	NoPrefixComments bool     `mapstructure:"no-prefix-comments"`
 	CustomOrder      bool     `mapstructure:"custom-order"`
 	NoLexOrder       bool     `mapstructure:"no-lex-order"`
+}
+
+type GoCondenseSettings struct {
+	MaxLen   int `mapstructure:"max-len"`
+	TabWidth int `mapstructure:"tab-width"`
 }
 
 type GoFmtSettings struct {

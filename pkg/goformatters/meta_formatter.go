@@ -8,6 +8,7 @@ import (
 
 	"github.com/golangci/golangci-lint/v2/pkg/config"
 	"github.com/golangci/golangci-lint/v2/pkg/goformatters/gci"
+	"github.com/golangci/golangci-lint/v2/pkg/goformatters/gocondense"
 	"github.com/golangci/golangci-lint/v2/pkg/goformatters/gofmt"
 	"github.com/golangci/golangci-lint/v2/pkg/goformatters/gofumpt"
 	"github.com/golangci/golangci-lint/v2/pkg/goformatters/goimports"
@@ -56,6 +57,16 @@ func NewMetaFormatter(log logutils.Log, cfg *config.Formatters, runCfg *config.R
 		m.formatters = append(m.formatters, formatter)
 	}
 
+	// gocondense prints with go/printer, so no need to format after it.
+	if slices.Contains(cfg.Enable, gocondense.Name) {
+		formatter, err := gocondense.New(&cfg.Settings.GoCondense)
+		if err != nil {
+			return nil, fmt.Errorf("gocondense: creating formatter: %w", err)
+		}
+
+		m.formatters = append(m.formatters, formatter)
+	}
+
 	// golines calls `format.Source()` internally so no need to format after it.
 	if slices.Contains(cfg.Enable, golines.Name) {
 		m.formatters = append(m.formatters, golines.New(&cfg.Settings.GoLines))
@@ -91,5 +102,5 @@ func (m *MetaFormatter) Format(filename string, src []byte) []byte {
 }
 
 func IsFormatter(name string) bool {
-	return slices.Contains([]string{gofmt.Name, gofumpt.Name, goimports.Name, gci.Name, golines.Name, swaggo.Name}, name)
+	return slices.Contains([]string{gofmt.Name, gofumpt.Name, goimports.Name, gci.Name, gocondense.Name, golines.Name, swaggo.Name}, name)
 }

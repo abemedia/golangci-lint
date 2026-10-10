@@ -1,0 +1,9 @@
+version: "2"
+
+formatters:
+  enable:
+    - gocondense
+  settings:
+    gocondense:
+      max-len: 100
+      tab-width: 8

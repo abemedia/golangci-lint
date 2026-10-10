@@ -31,6 +31,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.5.0
 	github.com/MirrexOne/unqueryvet v1.5.4
 	github.com/OpenPeeDeeP/depguard/v2 v2.2.1
+	github.com/abemedia/gocondense v0.4.3
 	github.com/alecthomas/chroma/v2 v2.27.0
 	github.com/alecthomas/go-check-sumtype v0.5.1-0.20260828200218-ae6904d28606
 	github.com/alexkohler/nakedret/v2 v2.0.6
@@ -151,9 +152,9 @@ require (
 	go.yaml.in/yaml/v3 v3.0.5
 	golang.org/x/exp v0.0.0-20250620022241-b7579e27df2b
 	golang.org/x/mod v0.41.0
-	golang.org/x/sync v0.23.0
+	golang.org/x/sync v0.24.0
 	golang.org/x/sys v0.48.0
-	golang.org/x/tools v0.50.0
+	golang.org/x/tools v0.51.0
 	honnef.co/go/tools v0.8.1
 	mvdan.cc/gofumpt v0.12.0
 	mvdan.cc/unparam v0.0.0-20260823230713-2fa3d841b0c8

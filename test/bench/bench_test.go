@@ -373,12 +373,13 @@ func getLinterNames(tb testing.TB, fastOnly bool) []string {
 
 	// add linter names here if needed.
 	excluded := []string{
-		"gci",       // Formatter
-		"gofmt",     // Formatter
-		"gofumpt",   // Formatter
-		"goimports", // Formatter
-		"golines",   // Formatter
-		"swaggo",    // Formatter
+		"gci",        // Formatter
+		"gocondense", // Formatter
+		"gofmt",      // Formatter
+		"gofumpt",    // Formatter
+		"goimports",  // Formatter
+		"golines",    // Formatter
+		"swaggo",     // Formatter
 	}
 
 	linters, err := lintersdb.NewLinterBuilder().Build(config.NewDefault())
